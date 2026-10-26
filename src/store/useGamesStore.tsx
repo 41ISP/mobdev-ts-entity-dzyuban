@@ -1,8 +1,17 @@
 import { create } from "zustand";
-import type { IGame } from "../types";
+import type { IGame, IStrapiResponse } from "../types";
+import { api } from "./api";
 interface IGameStore {
-    games: IGame[]
+    games: IStrapiResponse<IGame[]> | undefined
+    getGames: () => void
 }
 export const useGamesStore = create<IGameStore>((set) => ({
-    games: []
+    games: undefined,
+    getGames: async () => {
+        try{
+            const res = await api.getGames()
+            set({games: res})
+        } catch (error) {
+        console.error(error)}
+    },
 }))

@@ -1,8 +1,19 @@
 import { GameCard } from "./components/GameCard"
 import { GameForm } from "./components/GameForm"
 import "./App.css"
+import { useGamesStore } from "./store/useGamesStore"
+import { useEffect } from "react"
 
 export default function App() {
+    const {games, getGames} = useGamesStore()
+
+    useEffect(() => {
+        getGames()
+    }, [])
+
+    useEffect(()=> {
+        console.log(games)
+    }, [games])
     return (
         <div className="layout">
             <header className="top">
