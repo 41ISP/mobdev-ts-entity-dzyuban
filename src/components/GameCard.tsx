@@ -1,17 +1,18 @@
+import { API_URL } from "../api";
 import type { IGame } from "../types";
 
 
 interface IGameCard extends IGame {
     
 }
-export function GameCard({title, description, price, createdAt, alternativeText}: IGameCard) {
+export function GameCard({title, description, price, createdAt, rating}: IGameCard) {
     return (
         <article className="card">
             <div className="card__cover">
+            {cover && (<img src={API_URL + cover.url} alt="{cover.alternativeText}" />)}  
                 
-                <img src="{API_URL + cover.url}" alt="{cover.alternativeText}" />
-                <span>{alternativeText}</span>
-                <b className="card__rating">5</b>
+                
+                <b className="card__rating">{rating}</b>
             </div>
 
             <div className="card__body">
