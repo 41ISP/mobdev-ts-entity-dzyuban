@@ -4,18 +4,25 @@ export interface IStrapiResponse<T> {
   meta?: Meta
 }
 
+export interface IMedia {
+    id: number,
+    url: string,
+    alternativeText?: string
+}
+
 export interface IGame {
   id: number
   documentId: string
   title: string
-  description: Description[]
-  rating: number
-  price: number
-  genre: string
-  releaseDate: string
+  description?: Description[]
+  rating?: number
+  price?: number
+  genre?: string
+  releaseDate?: string
   createdAt: string
   updatedAt: string
   publishedAt: string
+  cover?: IMedia
 }
 
 export interface Description {
